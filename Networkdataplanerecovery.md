@@ -26,4 +26,12 @@ In this topology, Tier-0 is active-active in all location and as well primary in
 
 ### Manual Network Data Plane Recovery – Tier-0 or Tier-1 stretched with services (NAT / GW-FW)
 
-Here only manual recovery is possible as either T1 or T0 is running stateful services
+In this scenario, only manual recovery is possible as either T1 or T0 is running stateful services. There are four Tier-0 / Tier-1 stretched network topologies with services (NAT / GW-FW). Those which offer automatic data plane recovery in case of any location loss.
+
+#### T0 A/S Loc P/S + T1-Streched DR_Only
+
+In this topology T0 is active-standby and T1 is only running only DR services. It means there are not services running on it. When the Primary location is down, it means Tier-0 is lost, therefore in this scenario the data plane requires manually recovery because N-S traffic is impacted. 
+
+**To recover North/South traffic, the Tier-0 Primary location configuration must be changed from Location-A to Location-B**
+
+When the connection between the Primary location and secondary location is down, then it is referred as split brain situation. In split brain situation, N-S traffic from Primary location is working but from the secondary location is not going to work. To fix this, manually change the primary location but in this case N-S traffic in primary location is impacted. So it is this or that but not both.
